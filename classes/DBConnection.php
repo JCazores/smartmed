@@ -13,15 +13,23 @@ class DBConnection{
     
     public function __construct(){
         if (!isset($this->conn)) {
-            
-            $this->conn = new mysqli($this->host, $this->username, $this->password, $this->database, $this->port);
+            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+            $this->conn = new mysqli();
+            $this->conn->real_connect(
+                $this->host,
+                $this->username,
+                $this->password,
+                $this->database,
+                $this->port,
+                null,
+                MYSQLI_CLIENT_SSL
+            );
             
             if (!$this->conn) {
                 echo 'Cannot connect to database server';
                 exit;
             }            
         }    
-        
     }
     public function __destruct(){
         $this->conn->close();
