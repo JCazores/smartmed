@@ -21,6 +21,18 @@ try {
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
     exit();
+}// Set up PDO connection
+$host = 'acela.proxy.rlwy.net';
+$dbname = 'smart_med';
+$username = 'root';
+$password = 'oCZnrPaBlUHwYSSosvPTWAFRnKiSwQJI';
+$port = 58509;
+try {
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+    exit();
 }
 
 $db = new DBConnection;
