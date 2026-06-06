@@ -10,8 +10,9 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY . /var/www/html/
-
+RUN echo "display_errors = On" >> /etc/php/8.1/apache2/php.ini
 RUN rm -f /var/www/html/index.html
+
 
 RUN chown -R www-data:www-data /var/www/html
 
