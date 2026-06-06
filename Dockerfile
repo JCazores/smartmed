@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y \
 
 COPY . /var/www/html/
 
+RUN rm -f /var/www/html/index.html
+
 RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 80
