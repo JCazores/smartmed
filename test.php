@@ -1,10 +1,10 @@
 <?php
-echo "DB_HOST env: " . getenv('DB_HOST') . "<br>";
-echo "DB_PORT env: " . getenv('DB_PORT') . "<br>";
-echo "Trying to connect to: acela.proxy.rlwy.net:58509<br>";
+require_once('initialize.php');
+echo "DB_SERVER constant: " . DB_SERVER . "<br>";
+echo "DB_PORT constant: " . DB_PORT . "<br>";
 
 $conn = new mysqli();
-$conn->real_connect('acela.proxy.rlwy.net', 'root', 'oCZnrPaBlUHwYSSosvPTWAFRnKiSwQJI', 'smart_med', 58509);
+$conn->real_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT);
 
 if ($conn->connect_error) {
     echo "Error: " . $conn->connect_error;
