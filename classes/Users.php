@@ -43,7 +43,7 @@ Class Users extends DBConnection {
 	
 		// Prepare data for saving user details
 		foreach ($_POST as $k => $v) {
-			if (in_array($k, array('firstname', 'middlename', 'lastname', 'username', 'type'))) {
+			if (in_array($k, array('firstname', 'middlename', 'lastname', 'username', 'type', 'email'))) {
 				if (!empty($data)) $data .= " , ";
 				$data .= " {$k} = '{$v}' ";
 			}

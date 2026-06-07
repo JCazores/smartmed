@@ -54,6 +54,11 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 					<input type="text" name="lastname" id="lastname" class="form-control" value="<?php echo isset($meta['lastname']) ? $meta['lastname']: '' ?>" required pattern="[A-Za-z\s]+" 
         title="Last name can only contain letters and spaces.">
 				</div>
+                <div class="form-group col-6">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" class="form-control" 
+           value="<?php echo isset($meta['email']) ? $meta['email']: '' ?>" required>
+</div>
 				<div class="form-group col-6">
     <label for="username">Username</label>
     <input 
