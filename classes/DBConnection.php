@@ -13,7 +13,9 @@ class DBConnection{
                 DB_USERNAME,
                 DB_PASSWORD,
                 DB_NAME,
-                DB_PORT
+                DB_PORT,
+                null,
+                MYSQLI_CLIENT_SSL
             );
             
             if ($this->conn->connect_error) {
