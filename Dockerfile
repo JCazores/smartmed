@@ -2,8 +2,8 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y apache2 php8.1 php8.1-mysql libapache2-mod-php8.1 && rm -rf /var/lib/apt/lists/*
 COPY . /var/www/html/
-RUN echo 'display_errors = On' >> /etc/php/8.1/apache2/php.ini
+RUN echo "display_errors = On" >> /etc/php/8.1/apache2/php.ini
 RUN rm -f /var/www/html/index.html
 RUN chown -R www-data:www-data /var/www/html
 EXPOSE 80
-CMD ["bash", "-c", "sed -i 's/80/'\'/g' /etc/apache2/ports.conf && sed -i 's/:80/:'\'/g' /etc/apache2/sites-enabled/000-default.conf && source /etc/apache2/envvars && exec /usr/sbin/apache2 -D FOREGROUND"]
+CMD bash -c "sed -i 's/80/$PORT/g' /etc/apache2/ports.conf && sed -i 's/:80/:$PORT/g' /etc/apache2/sites-enabled/000-default.conf && source /etc/apache2/envvars && exec /usr/sbin/apache2 -D FOREGROUND"
